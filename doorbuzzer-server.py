@@ -1,19 +1,33 @@
 from datetime import datetime
+import argparse
 import socket
 
 __author__ = 'Emil Edholm'
 
 
 def main():
-    pw = ""
-    host = ""
-    port = 0
-    esp = ESP8266(pw, host, port)
-    then = datetime.now()
-    status = esp.unlock_door(5000)
-    now = datetime.now()
-    print('OK' if status == 0 else 'NOT OK')
-    print("It took: " + str((now-then).microseconds) + "ms")
+    args = cmd_arguments()
+
+
+    esp = ESP8266(args.password, args.host, args.port)
+    status, reason = esp.unlock_door(500)
+
+
+def cmd_arguments():
+    parser = argparse.ArgumentParser(description='Serve the doorbuzzer')
+    parser.add_argument('--host', '-i', required=True, metavar="H", help="The IP or host of the ESP8266")
+    parser.add_argument('--port', '-P', required=True, type=int, metavar='P', help="The port number to connect to")
+    parser.add_argument('--password', '-p', required=True, metavar='PWD', help="The password/api-key for access to the ESP8266")
+
+    return parser.parse_args()
+
+
+class SecureServer:
+    def __init__(self):
+        pass
+
+    def start(self):
+        pass
 
 
 class ESP8266:
@@ -25,24 +39,36 @@ class ESP8266:
     '''
     Buzz the door for the specified time.
     :param time: amount of time in milliseconds to buzz the door for
-    :return: -1 if something went wrong, else 0.
+    :return: (False, reason) if something went wrong, else true.
     '''
     def unlock_door(self, time=1500):
         s = socket.socket()
         s.settimeout(time/1000 + 2)
-        s.connect((self.host, self.port))
+        try:
+            s.connect((self.host, self.port))
+        except Exception as e:
+            return False, str(e)
 
         msg = str.encode("{}\n{}\n".format(self.password, time))
         s.send(msg)
-        ok = s.recv(6)
+        ok = b''
+        try:
+            ok = s.recv(1024)
+        except:
+            return False, "ESP8266 probably crashed..."
 
         if ok == b'':
-            return -1
+            return False, "Wrong password?"
 
         # Wait for server to close socket.
-        s.recv(1)
-        return 0
+        try:
+            s.recv(1024)
+        except:
+            return False, "ESP8266 probably crashed..."
 
+        if ok == b'opened\n':
+            return True, 'Everything went better than expected'
+        return False, 'Unknown error'
 
 if __name__ == '__main__':
     main()
