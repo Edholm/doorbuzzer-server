@@ -17,6 +17,8 @@ table class="table table-striped"
         td= checkbox_icon doorbuzzer.activated
         td= doorbuzzer.default_time
         td
+          = link_to unlock_doorbuzzer_path(doorbuzzer), class: 'btn btn-default btn-xs' do fa_icon 'unlock-alt', text: 'Unlock' end
+          '
           = link_to edit_doorbuzzer_path(doorbuzzer), class: 'btn btn-default btn-xs' do fa_icon 'pencil', text: 'Edit' end
           '
           = link_to doorbuzzer_path(doorbuzzer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' do fa_icon 'trash', text: 'Delete' end
