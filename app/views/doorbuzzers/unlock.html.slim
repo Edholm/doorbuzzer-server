@@ -1,0 +1,10 @@
+-if @response[0]
+  h3 The door has been unlocked
+-else
+  h3 Something went wrong
+blockquote
+  => @doorbuzzer.name
+  'responded with
+  = @response[1]
+
+= link_to 'Back', :back, :class => 'btn'
