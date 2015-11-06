@@ -1,5 +1,4 @@
-h1 New doorbuzzer
-
-== render 'form'
-
-= link_to 'Back', doorbuzzers_path
+- model_class = Doorbuzzer
+div class="page-header"
+  h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

@@ -1,30 +1,11 @@
-= form_for @doorbuzzer do |f|
-  - if @doorbuzzer.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@doorbuzzer.errors.count, "error")} prohibited this doorbuzzer from being saved:"
-      ul
-        - @doorbuzzer.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :activated
-    = f.check_box :activated
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :default_time
-    = f.number_field :default_time
-  .field
-    = f.label :host
-    = f.text_field :host
-  .field
-    = f.label :port
-    = f.number_field :port
-  .actions = f.submit
+= simple_form_for @doorbuzzer, html: { class: "form form-horizontal doorbuzzer" } do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :activated, input_html: { value: '1' }
+  = f.input :password, placeholder: 'The API-key of the doorbuzzer'
+  = f.input :default_time, placeholder: 'Time in milliseconds to buzz the door', input_html: {min: 500, step: 500, max: 10000}
+  = f.input :host, placeholder: 'Hostname or IP-address'
+  = f.input :port, placeholder: 'Port number', input_html: {min: 1, max: 65536}
+  = f.button :submit, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), doorbuzzers_path, :class => 'btn'
