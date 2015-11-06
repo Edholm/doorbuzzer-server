@@ -1,5 +1,6 @@
 class DoorbuzzersController < ApplicationController
   before_action :set_doorbuzzer, only: [:show, :edit, :update, :destroy]
+  before_action :doorkeeper_authorize!, only: :unlock 
 
   respond_to :html, :json
 
