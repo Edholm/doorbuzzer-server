@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  activated: false
+  password: MyString
+  default_time: 1
+  host: MyString
+  port: 1
+
+two:
+  name: MyString
+  description: MyText
+  activated: false
+  password: MyString
+  default_time: 1
+  host: MyString
+  port: 1

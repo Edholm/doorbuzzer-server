@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @doorbuzzer.name
+p
+  strong Description:
+  = @doorbuzzer.description
+p
+  strong Activated:
+  = @doorbuzzer.activated
+p
+  strong Password:
+  = @doorbuzzer.password
+p
+  strong Default time:
+  = @doorbuzzer.default_time
+p
+  strong Host:
+  = @doorbuzzer.host
+p
+  strong Port:
+  = @doorbuzzer.port
+
+= link_to 'Edit', edit_doorbuzzer_path(@doorbuzzer)
+'|
+= link_to 'Back', doorbuzzers_path

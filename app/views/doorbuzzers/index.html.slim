@@ -1,0 +1,33 @@
+h1 Listing doorbuzzers
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th Activated
+      th Password
+      th Default time
+      th Host
+      th Port
+      th
+      th
+      th
+
+  tbody
+    - @doorbuzzers.each do |doorbuzzer|
+      tr
+        td = doorbuzzer.name
+        td = doorbuzzer.description
+        td = doorbuzzer.activated
+        td = doorbuzzer.password
+        td = doorbuzzer.default_time
+        td = doorbuzzer.host
+        td = doorbuzzer.port
+        td = link_to 'Show', doorbuzzer
+        td = link_to 'Edit', edit_doorbuzzer_path(doorbuzzer)
+        td = link_to 'Destroy', doorbuzzer, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Doorbuzzer', new_doorbuzzer_path
