@@ -1,11 +1,11 @@
 class DoorbuzzersController < ApplicationController
   before_action :set_doorbuzzer, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @doorbuzzers = Doorbuzzer.all
-    #respond_with(@doorbuzzers)
+    respond_with(@doorbuzzer)
   end
 
   def show

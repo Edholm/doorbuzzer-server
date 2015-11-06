@@ -12,7 +12,7 @@ table class="table table-striped"
   tbody
     - @doorbuzzers.each do |doorbuzzer|
       tr
-        td= doorbuzzer.name
+        td= link_to doorbuzzer.name, doorbuzzer_path(doorbuzzer)
         td= doorbuzzer.description
         td= checkbox_icon doorbuzzer.activated
         td= doorbuzzer.default_time

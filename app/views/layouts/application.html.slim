@@ -28,12 +28,12 @@ html lang="en"
             span.icon-bar
             span.icon-bar
           a.navbar-brand href="/" DoorbuzzerServer
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
-
+          - if admin_signed_in?
+            .navbar-collapse.collapse.navbar-responsive-collapse
+              ul.nav.navbar-nav
+                li= link_to 'OAuth', oauth_applications_path
+              ul.nav.navbar-nav.navbar-right
+                li = link_to destroy_admin_session_path, method: :delete do fa_icon 'sign-out', text: 'Sign out' end
     .container
       .row
         .col-lg-9
