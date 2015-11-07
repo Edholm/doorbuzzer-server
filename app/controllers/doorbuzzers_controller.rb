@@ -48,6 +48,6 @@ class DoorbuzzersController < ApplicationController
     end
 
     def doorbuzzer_params
-      params.require(:doorbuzzer).permit(:name, :description, :activated, :password, :default_time, :host, :port)
+      params.require(:doorbuzzer).permit(:name, :description, :activated, :api_key, :default_time, :host, :port)
     end
 end

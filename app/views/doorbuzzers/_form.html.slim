@@ -2,7 +2,7 @@
   = f.input :name
   = f.input :description
   = f.input :activated, input_html: { value: '1' }
-  = f.input :password, placeholder: 'The API-key of the doorbuzzer'
+  = f.input :api_key, placeholder: 'The API-key of the doorbuzzer'
   = f.input :default_time, placeholder: 'Time in milliseconds to buzz the door', input_html: {min: 500, step: 500, max: 10000}
   = f.input :host, placeholder: 'Hostname or IP-address'
   = f.input :port, placeholder: 'Port number', input_html: {min: 1, max: 65536}
