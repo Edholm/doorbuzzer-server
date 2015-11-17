@@ -1,9 +1,9 @@
 -if @response[0]
-  h3 The door has been unlocked
+  h3 The action has been executed
 -else
   h3 Something went wrong
 blockquote
-  => @doorbuzzer.name
+  => @action.name
   'responded with
   = @response[1]
 

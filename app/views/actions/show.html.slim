@@ -1,0 +1,44 @@
+- model_class = Action
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:name) + ':'
+  br
+  = @action.name
+p
+  strong= model_class.human_attribute_name(:description) + ':'
+  br
+  = @action.description
+p
+  strong= model_class.human_attribute_name(:activated) + ':'
+  br
+  = @action.activated
+p
+  strong= model_class.human_attribute_name(:implementation) + ':'
+  br
+  = @action.implementation
+p
+  strong= model_class.human_attribute_name(:api_key) + ':'
+  br
+  = @action.api_key
+p
+  strong= model_class.human_attribute_name(:default_time) + ':'
+  br
+  = @action.default_time
+p
+  strong= model_class.human_attribute_name(:host) + ':'
+  br
+  = @action.host
+p
+  strong= model_class.human_attribute_name(:port) + ':'
+  br
+  = @action.port
+
+= link_to t('.back', :default => t("helpers.links.back")), actions_path, :class => 'btn btn-default'
+'
+= link_to edit_action_path(@action), :class => 'btn btn-default' do fa_icon 'pencil', text: "Edit" end
+'
+= link_to action_path(@action), :method => "delete", :data => { confirm: 'Are you sure?'}, class: 'btn btn-danger' do fa_icon 'trash', text: 'Delete' end
+'
+= link_to execute_action_path(@action), class: 'btn btn-default' do fa_icon 'execute-alt', text: 'execute' end

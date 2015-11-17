@@ -1,4 +1,4 @@
-module DoorbuzzersHelper
+module ActionsHelper
   def checkbox_icon activated
     unless activated
       return fa_icon 'square-o'

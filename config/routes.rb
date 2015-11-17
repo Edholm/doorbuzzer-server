@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   devise_for :admins
   use_doorkeeper
 
-  resources :doorbuzzers do
+  resources :actions do
     member do
-      get :unlock
+      get :execute
     end
   end
 
-  root 'doorbuzzers#index'
+  root 'actions#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

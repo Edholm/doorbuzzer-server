@@ -4,7 +4,7 @@ one:
   name: MyString
   description: MyText
   activated: false
-  password: MyString
+  api_key: MyString
   default_time: 1
   host: MyString
   port: 1
@@ -13,7 +13,7 @@ two:
   name: MyString
   description: MyText
   activated: false
-  password: MyString
+  api_key: MyString
   default_time: 1
   host: MyString
   port: 1

@@ -1,0 +1,12 @@
+= simple_form_for @action, as: :a, html: { class: "form form-horizontal action" } do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :activated, input_html: { value: '1' }
+  = f.input :implementation, collection: BaseAction.descendants, include_blank: false
+  = f.input :api_key, placeholder: 'The API-key of the action'
+  = f.input :default_time, placeholder: 'How long to apply action (in milliseconds) (if applicable)', input_html: {min: 500, step: 500, max: 10000}
+  = f.input :host, placeholder: 'Hostname or IP-address'
+  = f.input :port, placeholder: 'Port number', input_html: {min: 1, max: 65536}
+  = f.button :submit, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), actions_path, :class => 'btn'

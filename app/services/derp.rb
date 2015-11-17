@@ -1,0 +1,3 @@
+class Derp < BaseAction
+
+end

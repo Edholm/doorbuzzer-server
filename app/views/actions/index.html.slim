@@ -1,0 +1,26 @@
+- model_class = Action
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:name)
+      th= model_class.human_attribute_name(:description)
+      th= model_class.human_attribute_name(:activated)
+      th= model_class.human_attribute_name(:default_time)
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+    - @actions.each do |action|
+      tr
+        td= link_to action.name, action_path(action)
+        td= action.description
+        td= checkbox_icon action.activated
+        td= action.default_time
+        td
+          = link_to execute_action_path(action), class: 'btn btn-default btn-xs' do fa_icon 'execute-alt', text: 'Execute' end
+          '
+          = link_to edit_action_path(action), class: 'btn btn-default btn-xs' do fa_icon 'pencil', text: 'Edit' end
+          '
+          = link_to action_path(action), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' do fa_icon 'trash', text: 'Delete' end
+
+= link_to new_action_path, class: 'btn btn-primary' do fa_icon 'plus', text: 'New' end
