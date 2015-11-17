@@ -17,7 +17,7 @@ table class="table table-striped"
         td= checkbox_icon action.activated
         td= action.default_time
         td
-          = link_to execute_action_path(action), class: 'btn btn-default btn-xs' do fa_icon 'execute-alt', text: 'Execute' end
+          = link_to execute_action_path(action), class: 'btn btn-default btn-xs' do fa_icon 'arrow-circle-o-right', text: 'Execute' end
           '
           = link_to edit_action_path(action), class: 'btn btn-default btn-xs' do fa_icon 'pencil', text: 'Edit' end
           '
